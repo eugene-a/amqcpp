@@ -29,7 +29,7 @@ struct ConsumeData
         queue(q),
         consumer_tag(amqp_empty_bytes),
         no_local(1),
-        no_ack(0),
+        no_ack(1),
         exclusive(excl),
         arguments(amqp_empty_table)
     {}
