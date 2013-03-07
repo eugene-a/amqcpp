@@ -20,6 +20,14 @@ amqp_bytes_t to_amqp_bytes<amqp_bytes_t>(const amqp_bytes_t& bytes, bool copy)
     return copy ? amqp_bytes_malloc_dup(bytes) : bytes;
 }
 
+template<> inline
+amqp_bytes_t to_amqp_bytes<const char*>(const char* const& str, bool copy)
+{
+    amqp_bytes_t result;
+    result.bytes = const_cast<char*>(str);
+    result.len = strlen(str);
+    return to_amqp_bytes(result, copy);
+}
 
 template<> inline
 amqp_bytes_t to_amqp_bytes<std::string>(const std::string& str, bool copy)
