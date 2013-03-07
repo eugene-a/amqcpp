@@ -21,7 +21,7 @@ amqp_bytes_t to_amqp_bytes<amqp_bytes_t>(const amqp_bytes_t& bytes, bool copy)
 }
 
 template<> inline
-amqp_bytes_t to_amqp_bytes<const char*>(const char* const& str, bool copy)
+amqp_bytes_t to_amqp_bytes<char*>(char* const& str, bool copy)
 {
     amqp_bytes_t result;
     result.bytes = const_cast<char*>(str);
